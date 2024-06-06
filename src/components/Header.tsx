@@ -1,4 +1,5 @@
 import React from "react";
+import "../style/header.scss";
 
 type Props = {
   setSearch: (setSearch: string) => void;
@@ -9,9 +10,13 @@ export const Header = ({ setSearch }: Props) => {
     setSearch(e.target.value);
   };
   return (
-    <>
-      <h1>Movies</h1>
-      <input className="search-bar" onChange={handleChange} />
-    </>
+    <div className="header">
+      <h1 className="title">Movies</h1>
+      <input
+        className="search-bar"
+        placeholder="Search"
+        onChange={handleChange}
+      />
+    </div>
   );
 };

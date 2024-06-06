@@ -1,0 +1,33 @@
+.header {
+  padding: 25px;
+  input {
+    width: 50%;
+    height: 50px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    border: none;
+    opacity: 80%;
+  }
+  input:focus {
+    outline: none;
+  }
+  h1 {
+    font-size: 150px;
+    font-weight: bolder;
+    color: black;
+    text-shadow: 0 0 15px white;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .header {
+    .title {
+      font-size: 60px;
+    }
+    .search-bar {
+      width: 100%;
+      height: 25px;
+      font-size: 16px;
+    }
+  }
+}

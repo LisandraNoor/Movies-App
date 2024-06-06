@@ -1,0 +1,121 @@
+.movie {
+  background: no-repeat top center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  align-content: center;
+  padding: 50px 150px;
+
+  .bck-btn {
+    float: left;
+    padding: 10px;
+    width: 130px;
+    font-size: 24px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 15px;
+    display: inline;
+    opacity: 85%;
+  }
+
+  .mov-details {
+    margin-top: 80px;
+    height: auto;
+    padding: 40px 80px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    border-radius: 30px;
+    .title {
+      text-align: left;
+      font-size: 50px;
+      padding-bottom: 30px;
+    }
+    .mov-info {
+      display: flex;
+      .poster {
+        float: left;
+        height: 500px;
+      }
+      .desc1 {
+        display: flex;
+        float: right;
+        padding-left: 60px;
+        font-size: 28px;
+        text-align: left;
+        .vote-average {
+          display: flex;
+          align-items: center;
+          .star {
+            padding-left: 10px;
+          }
+        }
+        tr {
+          border-bottom: 1px solid rgb(58, 56, 56);
+          padding: 0px 10px 15px 0px;
+        }
+        td {
+          padding: 20px;
+        }
+      }
+    }
+    .desc2 {
+      padding-top: 30px;
+      text-align: left;
+      .overview-subtitle {
+        width: 100%;
+        font-size: 28px;
+        border-bottom: 1px solid rgb(58, 56, 56);
+        padding: 0px 10px 15px 0px;
+      }
+      .overview {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .movie {
+    padding: 25px;
+    .bck-btn {
+      font-size: 14px;
+      width: 90px;
+      padding: 10px;
+    }
+    .mov-details {
+      margin-top: 50px;
+      padding: 40px;
+      .title {
+        font-size: 24px;
+        margin: 0px;
+      }
+      .mov-info {
+        display: block;
+        .poster {
+          height: 300px;
+          float: none;
+        }
+        .desc1 {
+          padding-left: 0px;
+          padding-top: 25px;
+          font-size: 16px;
+          float: none;
+          .vote-average .star {
+            margin-bottom: 5px;
+            padding-left: 5px;
+            height: 20px;
+          }
+        }
+      }
+      .desc2 {
+        .overview-subtitle {
+          font-size: 16px;
+        }
+        .overview {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
