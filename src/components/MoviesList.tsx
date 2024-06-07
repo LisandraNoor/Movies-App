@@ -1,29 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../style/movieList.scss";
 
 interface IPROPS {
   search: string;
   setMovie: any;
+  movieList: any[];
 }
 
-export const MoviesList: React.FC<IPROPS> = ({ search, setMovie }) => {
-  const [movieList, setMovieList] = useState<any[]>([]);
+export const MoviesList: React.FC<IPROPS> = ({
+  search,
+  setMovie,
+  movieList,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
+
   const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-
-  const getMovie = () => {
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=cd8593c0b4f7ff5a636a9ba503c6b5fc"
-    )
-      .then((res) => res.json())
-      .then((json) => setMovieList(json.results));
-  };
-
-  useEffect(() => {
-    getMovie();
-  }, []);
 
   function prePage() {
     if (currentPage !== 1) {

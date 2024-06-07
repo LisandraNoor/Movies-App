@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./style/App.scss";
-import { Header } from "./components/Header";
-import { MoviesList } from "./components/MoviesList";
 import { MovieDetails } from "./components/MovieDetails";
+import { fetchMovies, type Movie } from "./components/api";
+import { Home } from "./components/Home";
 
 function App() {
-  const [search, setSearch] = useState<string>("");
-  const [selectedMovie, setSelectedMovie] = useState({});
+  const [selectedMovie, setSelectedMovie] = useState<any[]>([]);
+  const [movieList, setMovieList] = useState<Movie[]>([]);
 
   function setMovie(movie: []) {
     setSelectedMovie(movie);
   }
 
+  const randomBackdrop = () => {
+    const backdrops = movieList.map((mov) => mov.backdrop_path);
+    const randomNr = Math.floor(Math.random() * backdrops.length);
+    return backdrops[randomNr];
+  };
+
+  useEffect(() => {
+    fetchMovies().then((data) => setMovieList(data));
+  }, []);
+
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://image.tmdb.org/t/p/original${randomBackdrop()})`,
+      }}
+    >
       {Object.keys(selectedMovie).length === 0 ? (
-        <>
-          <Header setSearch={setSearch} />
-          <MoviesList search={search} setMovie={setMovie} />
-        </>
+        <Home setMovie={setMovie} movieList={movieList} />
       ) : (
         <MovieDetails selectedMovie={selectedMovie} setMovie={setMovie} />
       )}
