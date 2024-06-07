@@ -12,9 +12,6 @@ export const MoviesList: React.FC<IPROPS> = ({ search, setMovie }) => {
   const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const movies = movieList.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(movieList.length / recordsPerPage);
-  const numbers = [...Array(npage + 1).keys()].slice(1);
 
   const getMovie = () => {
     fetch(
@@ -49,8 +46,12 @@ export const MoviesList: React.FC<IPROPS> = ({ search, setMovie }) => {
   }
 
   const searchFilter = () => {
-    return movies.filter((mov) => mov.title.toLowerCase().includes(search));
+    return movieList.filter((mov) => mov.title.toLowerCase().includes(search));
   };
+
+  const movies = searchFilter().slice(firstIndex, lastIndex);
+  const npage = Math.ceil(searchFilter().length / recordsPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
     <div className="movie-list">
@@ -58,7 +59,7 @@ export const MoviesList: React.FC<IPROPS> = ({ search, setMovie }) => {
         <p className="not-found">Not Found</p>
       ) : (
         <ul className="movies">
-          {searchFilter().map((movie) => (
+          {movies.map((movie) => (
             <li
               className="movie-item"
               key={movie.id}

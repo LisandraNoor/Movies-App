@@ -1,10 +1,12 @@
+@import "./global.scss";
+
 .header {
   padding: 25px;
   input {
     width: 50%;
     height: 50px;
     border-radius: 30px;
-    padding: 20px;
+    padding: 5px 20px;
     font-size: 20px;
     border: none;
     opacity: 80%;
@@ -13,10 +15,11 @@
     outline: none;
   }
   h1 {
+    margin: 0px;
     font-size: 150px;
     font-weight: bolder;
-    color: black;
-    text-shadow: 0 0 15px white;
+    color: $secondary_text;
+    text-shadow: 0 0 15px $text_decoration;
   }
 }
 @media only screen and (max-width: 800px) {
@@ -25,7 +28,7 @@
       font-size: 60px;
     }
     .search-bar {
-      width: 100%;
+      width: 80%;
       height: 25px;
       font-size: 16px;
     }
